@@ -1,0 +1,107 @@
+<div class="container" ng-controller="homeCtrl">
+  <div ng-include="'view/header.html'"></div>
+  <div id="busca" class="well">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <input type="search" class="form-control center-block" id="busca" placeholder="digite sua busca" ng-model="query">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default center-block" ng-click="buscar()">Buscar</button>
+      </div>
+    </form>
+  </div>
+  <a class="btn btn-default" href="#/documento/incluir">Incluir documento</a>
+  <div id="resultado">
+    <div class="alert alert-info" ng-show="total == 0">
+      <strong>Não encontrou resultados.</strong>
+    </div>
+    <table class="table table-hover" ng-show="total > 0">
+      <thead>
+        <tr>
+          <th>Título Formal</th>
+          <th>Título Atribuído</th>
+          <th>Nível de descrição</th>
+          <th>Localização interna</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="documento in documentos">
+          <td>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#docModal" ng-click="getDocumento(documento.id)">
+              {{documento.tituloFormal}}
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#docModal" ng-click="getDocumento(documento.id)">
+              {{documento.tituloAtribuido}}
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#docModal" ng-click="getDocumento(documento.id)">
+              {{documento.indexacaoDocumento.nivelDescricao}}
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#docModal" ng-click="getDocumento(documento.id)">
+              {{documento.indexacaoDocumento.localizacaoInterna}}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="paginacao">
+    <ul class="pagination">
+      <li ng-repeat="page in paginate" ng-class="{active: page == actualPage}">
+        <a ng-click="buscar(page)">{{page}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="docModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Documento</h4>
+        </div>
+        <div class="modal-body">
+          <label>Código de refência</label>
+          <p>{{viewDocumento.codRef}}</p>
+          <label>Título formal</label>
+          <p>{{viewDocumento.tituloFormal}}</p>
+          <label>Título atribuído</label>
+          <p>{{viewDocumento.tituloAtribuido}}</p>
+          <label>Descrição semântica</label>
+          <p>{{viewDocumento.descr}}</p>
+          <label>Data de produção</label>
+          <p>{{formatDate(viewDocumento.dataProducao)}}</p>
+          <label>Data de acumulação</label>
+          <p>{{formatDate(viewDocumento.indexacaoDocumento.dataAcumulacao)}}</p>
+          <label>Espécie documental</label>
+          <p>{{viewDocumento.indexacaoDocumento.especieDocumental}}</p>
+          <label>Gênero documental</label>
+          <p>{{viewDocumento.generoDocumental.genero}}</p>
+          <label>Nível de descrição</label>
+          <p>{{viewDocumento.indexacaoDocumento.nivelDescricao}}</p>
+          <label>Dimensão e suporte</label>
+          <p>{{viewDocumento.dimensaoSuporte}}</p>
+          <label>Nome dos produtores</label>
+          <p>{{viewDocumento.nomeProdutores}}</p>
+          <label>Notas sobre conservação</label>
+          <p>{{viewDocumento.indexacaoDocumento.notasConservacao}}</p>
+          <label>Notas gerais</label>
+          <p>{{viewDocumento.indexacaoDocumento.notasGerais}}</p>
+          <label>Pontos de acesso e indexação</label>
+          <p>{{viewDocumento.indexacaoDocumento.palavrasChaves}}</p>
+          <label>Localização interna</label>
+          <p>{{viewDocumento.indexacaoDocumento.localizacaoInterna}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

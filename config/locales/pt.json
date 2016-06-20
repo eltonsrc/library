@@ -1,0 +1,7 @@
+{
+  "library": "Biblioteca",
+  "login.data.invalid": "Email e/ou senha inválidos",
+  "login.label": "Login",
+  "login.password.label": "Senha",
+  "login.enter.label": "Entrar"
+}
