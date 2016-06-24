@@ -1,0 +1,15 @@
+# put in sublime settings user
+{
+    "translate_tabs_to_spaces": true,
+    "highlight_line": true,
+    "draw_white_space": "all",
+    "fallback_encoding": "UTF-8",
+    "default_line_ending": "unix",
+    "show_encoding": true,
+    "show_line_endings": true
+}
+
+# put in key bindings user
+[
+    { "keys": ["f12"], "command": "reindent", "args": {"single_line": false}}
+]
