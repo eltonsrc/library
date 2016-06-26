@@ -35,9 +35,10 @@ module.exports.routes = {
   '/': {
     view: 'index',
     locals: {
+      layout: false,
       loginInvalid: false
     }
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -48,5 +49,5 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+  'post /user/login': 'UserController.login'
 };

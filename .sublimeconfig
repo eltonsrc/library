@@ -6,7 +6,8 @@
     "fallback_encoding": "UTF-8",
     "default_line_ending": "unix",
     "show_encoding": true,
-    "show_line_endings": true
+    "show_line_endings": true,
+    "tab_size": 2
 }
 
 # put in key bindings user
